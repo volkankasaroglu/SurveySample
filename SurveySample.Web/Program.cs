@@ -28,7 +28,6 @@ namespace SurveySample.Web
 
             services.AddScoped<ISurveyService, SurveyService>();
             services.AddScoped<IQuestionService, QuestionService>();
-            services.AddScoped<IQuestionOptionService, QuestionOptionService>();
 
             var mapperConfig = new MapperConfiguration(cfg => cfg.AddProfile(new MapperProfile()));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

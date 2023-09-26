@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { SurveyList } from "../components/surveyList";
-import { SurveyForm } from "../components/surveyForm";
+import { SurveyList } from "./surveyList";
+import { SurveyForm } from "./surveyForm";
 
 export function Surveys() {
     const [showForm, setShowForm] = useState(false);

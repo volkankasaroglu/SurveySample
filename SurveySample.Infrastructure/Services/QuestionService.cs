@@ -40,7 +40,26 @@ namespace SurveySample.Infrastructure.Services
 
         public void Update(Question question)
         {
-            db.Questions.Update(question);
+            // db.Questions.Update(question);
+
+            db.Entry(question).State = EntityState.Modified;
+
+            if (question.questionOptions != null)
+            {
+                // QuestionOption nesnelerini kontrol et
+                foreach (var questionOption in question.questionOptions)
+                {
+                    if (questionOption.id == 0) // Yeni eklenmiş bir nesne
+                    {
+                        db.QuestionOptions.Add(questionOption);
+                    }
+                    else // Zaten var olan bir nesne
+                    {
+                        db.Entry(questionOption).State = EntityState.Modified;
+                    }
+                }
+            }
+
             db.SaveChanges();
         }
 

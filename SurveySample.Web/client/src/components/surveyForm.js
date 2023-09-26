@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { surveyService } from "../services/SurveyService";
 
 export function SurveyForm(props) {

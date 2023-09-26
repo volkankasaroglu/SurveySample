@@ -40,6 +40,7 @@ function AddRemoveOptionField({ initialOptions = [], ...props }) {
                         {inputFields.length > 1 && (
                             <button
                                 className="btn btn-outline-danger"
+                                type="button"
                                 onClick={() => removeInputField(index)}
                             >
                                 x
@@ -50,7 +51,7 @@ function AddRemoveOptionField({ initialOptions = [], ...props }) {
             ))}
             <div className="row">
                 <div className="col-sm-12">
-                    <button className="btn btn-outline-success" onClick={addInputField}>
+                    <button className="btn btn-outline-success" type="button" onClick={addInputField}>
                         Add New
                     </button>
                 </div>

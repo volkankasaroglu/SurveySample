@@ -47,9 +47,12 @@ export function SurveyList(props) {
                                 <tr key={index}>
                                     <td>{survey.surveyTitle}</td>
                                     <td style={{ width: "10px", whiteSpace: "nowrap" }}>
-                                        <button type="button" onClick={() => props.showSurveyForm(survey)} className="btn btn-primary btn-sm me-2">Edit Title</button>
+                                        <Link to={`/surveyview/${survey.id}`}>
+                                            <button className="btn btn-primary btn-sm me-2">View Survey</button>
+                                        </Link>
+                                        <button type="button" onClick={() => props.showSurveyForm(survey)} className="btn btn-primary btn-sm me-2">Change Title</button>
                                         <Link to={`/questions/${survey.id}`}>
-                                            <button className="btn btn-primary btn-sm me-2">Content</button>
+                                            <button className="btn btn-primary btn-sm me-2">Edit Contents</button>
                                         </Link>
                                         <button type="button" onClick={() => deleteSurvey(survey.id)} className="btn btn-danger btn-sm">Delete</button>
                                     </td>
