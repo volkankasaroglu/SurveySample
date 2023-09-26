@@ -8,12 +8,9 @@ export function SurveyForm(props) {
     function handleSubmit(event) {
         event.preventDefault();
 
-        //read form data
         const formData = new FormData(event.target);
-        //convert formData to object
         const survey = Object.fromEntries(formData.entries());
 
-        //form validation
         if (!survey.surveyTitle) {
             setErrorMessage(
                 <div className="alert alert-warning" role="alert">
@@ -23,7 +20,6 @@ export function SurveyForm(props) {
             return;
         }
 
-        //post and save data
         if (props.survey.id) {
             SurveyService
                 .update(survey, props.survey.id)
@@ -45,13 +41,11 @@ export function SurveyForm(props) {
                     console.log(error.response);
                 });
         }
-
-
     }
 
     return (
         <>
-            <h2 className="text-center mb-3"> {props.survey.id ? "Edit Survey" : "Create New Survey"}</h2>
+            <h2 className="text-center mb-3"> {props.survey.id ? "Edit Survey Title" : "Create New Survey"}</h2>
 
             <div className="row">
                 <div className="col-lg-6 mx-auto">

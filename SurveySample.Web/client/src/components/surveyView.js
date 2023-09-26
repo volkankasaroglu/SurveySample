@@ -4,6 +4,7 @@ import { QuestionService } from "../services/questionService";
 import { VoteService } from "../services/voteService";
 import { SurveyService } from "../services/surveyService";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const pollStyle = {
   questionSeparator: true,
@@ -89,6 +90,16 @@ export function SurveyView() {
 
   return (
     <>
+      <div className="col-6 mx-auto d-flex align-items-center">
+          <Link to={"/surveys"}>
+              <button className="btn btn-secondary me-2">{"<<"}</button>
+          </Link>
+          <div className="ms-auto">
+          <Link to={"/surveyresults/"+ (survey && survey.id)}>
+              <button className="btn btn-success me-2">Results Table</button>
+          </Link>
+          </div>
+      </div>
       <h1 className="text-center text-primary">{survey && survey.surveyTitle}</h1>
       <div className="col-6 mx-auto">
         {pollQuestions.map((poll, index) => (

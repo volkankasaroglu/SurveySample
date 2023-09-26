@@ -7,7 +7,6 @@ export function QuestionForm(props) {
 
     const [errorMessage, setErrorMessage] = useState("");
     const param = useParams();
-
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -23,8 +22,6 @@ export function QuestionForm(props) {
                 id: formObject["optionId-" + index] ? parseInt(formObject["optionId-" + index], 10) : 0
             }));
 
-
-        // Form validation
         if (!questionText) {
             setErrorMessage(
                 <div className="alert alert-warning" role="alert">
@@ -41,7 +38,6 @@ export function QuestionForm(props) {
             surveyId: parseInt(formObject.surveyId, 10)
         };
 
-        // Post and save data
         if (props.question.id) {
             QuestionService.update(questionData, props.question.id)
                 .then((response) => {

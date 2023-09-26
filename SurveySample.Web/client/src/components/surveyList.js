@@ -31,8 +31,12 @@ export function SurveyList(props) {
 
     return (
         <>
-            <h2 className="text-center mb-3"> List Of Surveys</h2>
-            <button type="button" onClick={() => props.showSurveyForm({})} className="btn btn-primary me-2">Create</button>
+            <h2 className="text-center mb-3"> Surveys List</h2>
+            <div className="d-flex align-items-center">
+                <div className="ms-auto">
+                    <button type="button" onClick={() => props.showSurveyForm({})} className="btn btn-success me-2">New Survey</button>
+                </div>
+            </div>
             <table className="table">
                 <thead>
                     <tr>

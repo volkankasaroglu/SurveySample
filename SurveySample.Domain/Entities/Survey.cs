@@ -14,7 +14,6 @@ namespace SurveySample.Domain.Entities
         [MaxLength(250)]
         public string surveyTitle { get; set; }
 
-        // Navigation property for related questions
         public virtual IEnumerable<Question>? questions { get; set; } 
     }
 }

@@ -40,7 +40,9 @@ namespace SurveySample.Infrastructure.Services
 
         public void Update(Survey survey)
         {
-            db.Surveys.Update(survey);
+            // Veritabanından mevcut Survey nesnesini getirin
+            survey.questions = db.Questions.Where(e => e.surveyId == survey.id);
+
             db.SaveChanges();
         }
 
@@ -48,5 +50,6 @@ namespace SurveySample.Infrastructure.Services
         {
             return db.Questions.Where(a => a.surveyId == id).ToList();
         }
+
     }
 }

@@ -14,7 +14,6 @@ namespace SurveySample.Infrastructure
 
         }
 
-
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionOption> QuestionOptions { get; set; }

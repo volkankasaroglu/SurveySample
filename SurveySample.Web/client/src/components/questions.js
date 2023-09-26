@@ -4,6 +4,7 @@ import { QuestionList } from "./questionList";
 import { QuestionForm } from "./questionForm";
 
 export function Questions() {
+
     const param  = useParams();
     const [content, setContent] = useState(<QuestionList surveyId={param.surveyId} showQuestionForm={showQuestionForm}/>);
 

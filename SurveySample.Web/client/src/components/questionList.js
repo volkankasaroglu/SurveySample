@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export function QuestionList(props) {
+
     const [questions, setQuestions] = useState([]);
     const param = useParams();
-
     function fetchQuestions() {
         QuestionService
             .getSurveyQuestions(param.surveyId)
@@ -35,10 +35,10 @@ export function QuestionList(props) {
             <h2 className="text-center mb-3"> Survey Contents</h2>
             <div className="d-flex align-items-center">
                 <Link to={"/surveys"}>
-                    <button className="btn btn-secondary me-2">Back to Surveys</button>
+                    <button className="btn btn-secondary me-2">{"<<"}</button>
                 </Link>
                 <div className="ms-auto">
-                    <button type="button" onClick={() => props.showQuestionForm({})} className="btn btn-primary me-2">Add Question</button>
+                    <button type="button" onClick={() => props.showQuestionForm({})} className="btn btn-success me-2">Add Question</button>
                 </div>
             </div>
 

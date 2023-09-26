@@ -4,7 +4,6 @@ function AddRemoveOptionField({ initialOptions = [], ...props }) {
     const defaultOption = { id: null, optionText: '' };
     const [inputFields, setInputFields] = useState(initialOptions.length ? initialOptions : [defaultOption]);
 
-
     const addInputField = () => {
         setInputFields([...inputFields, { optionText: '' }]);
     }
