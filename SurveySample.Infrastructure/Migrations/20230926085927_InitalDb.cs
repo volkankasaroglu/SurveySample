@@ -14,32 +14,32 @@ namespace SurveySample.Infrastructure.Migrations
                 name: "Surveys",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SurveyTitle = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    surveyTitle = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Surveys", x => x.Id);
+                    table.PrimaryKey("PK_Surveys", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Questions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    QuestionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SurveyId = table.Column<int>(type: "int", nullable: false)
+                    questionText = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    surveyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Questions", x => x.Id);
+                    table.PrimaryKey("PK_Questions", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Questions_Surveys_SurveyId",
-                        column: x => x.SurveyId,
+                        name: "FK_Questions_Surveys_surveyId",
+                        column: x => x.surveyId,
                         principalTable: "Surveys",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -47,31 +47,31 @@ namespace SurveySample.Infrastructure.Migrations
                 name: "QuestionOptions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OptionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuestionId = table.Column<int>(type: "int", nullable: false)
+                    optionText = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    questionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionOptions", x => x.Id);
+                    table.PrimaryKey("PK_QuestionOptions", x => x.id);
                     table.ForeignKey(
-                        name: "FK_QuestionOptions_Questions_QuestionId",
-                        column: x => x.QuestionId,
+                        name: "FK_QuestionOptions_Questions_questionId",
+                        column: x => x.questionId,
                         principalTable: "Questions",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionOptions_QuestionId",
+                name: "IX_QuestionOptions_questionId",
                 table: "QuestionOptions",
-                column: "QuestionId");
+                column: "questionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_SurveyId",
+                name: "IX_Questions_surveyId",
                 table: "Questions",
-                column: "SurveyId");
+                column: "surveyId");
         }
 
         /// <inheritdoc />

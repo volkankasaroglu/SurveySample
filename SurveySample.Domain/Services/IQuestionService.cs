@@ -13,6 +13,7 @@ namespace SurveySample.Domain.Services
         void Update(Question question);
         void Delete(Question question);
         Question? Get(int id);
+        IEnumerable<Question> GetSurveyQuestions(int surveyId);
         IEnumerable<QuestionOption> GetQuestionOptions(int id);
     }
 }

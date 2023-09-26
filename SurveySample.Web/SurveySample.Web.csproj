@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SurveySampleWithReact\SurveySample.Domain\SurveySample.Domain.csproj" />
-    <ProjectReference Include="..\..\SurveySampleWithReact\SurveySample.Infrastructure\SurveySample.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\SurveySample\SurveySample.Domain\SurveySample.Domain.csproj" />
+    <ProjectReference Include="..\..\SurveySample\SurveySample.Infrastructure\SurveySample.Infrastructure.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -31,11 +31,11 @@ namespace SurveySample.Infrastructure.Services
 
         public Survey? Get(int id)
         {
-            return db.Surveys.Include(a=>a.Questions).FirstOrDefault(e => e.Id == id);
+            return db.Surveys.Include(a=>a.questions).FirstOrDefault(e => e.id == id);
         }
         public IEnumerable<Survey> GetAll()
         {
-            return db.Surveys.Include(a => a.Questions).AsEnumerable();
+            return db.Surveys.Include(a => a.questions).AsEnumerable();
         }
 
         public void Update(Survey survey)
@@ -46,7 +46,7 @@ namespace SurveySample.Infrastructure.Services
 
         public IEnumerable<Question> GetSurveyQuestions(int id)
         {
-            return db.Questions.Where(a => a.Survey.Id == id).ToList();
+            return db.Questions.Where(a => a.surveyId == id).ToList();
         }
     }
 }

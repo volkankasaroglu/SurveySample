@@ -8,7 +8,7 @@ namespace SurveySample.Domain.DTOs
 {
     public class SurveyIndexDTO
     {
-        int Id { get; set; }
-        public string SurveyTitle { get; set; }
+        public int id { get; set; }
+        public string surveyTitle { get; set; }
     }
 }
