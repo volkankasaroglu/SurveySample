@@ -12,13 +12,14 @@ namespace SurveySample.Domain.Entities
         public int id { get; set; }
 
         [Required]
-        [StringLength(500, MinimumLength = 1)]
+        [MaxLength(500)] 
         public string questionText { get; set; }
 
         [ForeignKey("Survey")]
         public int surveyId { get; set; }
-        
+
+        public virtual Survey survey { get; set; }
+
         public virtual IEnumerable<QuestionOption>? questionOptions { get; set; }
-        
     }
 }

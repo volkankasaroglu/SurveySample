@@ -17,7 +17,9 @@ const getById = (id) => {
 };
 
 const create = (model) => {
+    console.log("vvv");
     console.log(model);
+    console.log("vvv");
     return http.post("question", model);
 };
 

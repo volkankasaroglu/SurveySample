@@ -95,10 +95,10 @@ function QuestionForm(props){
         .filter(([key, value]) => key.startsWith("option-"))
         .map(([key, value], index) => ({
             optionText: value,
-            id: formObject["optionId-" + index] ? parseInt(formObject["optionId-" + index], 10) : null
+            id: formObject["optionId-" + index] ? parseInt(formObject["optionId-" + index], 10) : 0
         }));
         const surveyId = formObject.surveyId; 
-    
+
         // Form validation
         if (!questionText) {
             setErrorMessage(
@@ -108,18 +108,17 @@ function QuestionForm(props){
             );
             return;
         }
-    
+        console.log("ww")
+        console.log(optionsArray)
+        console.log("ww")
         const questionData = {
             questionText: questionText,
-            questionOptions: optionsArray.map(option => ({ optionText: option })),
+            questionOptions: optionsArray,
             surveyId: parseInt(formObject.surveyId, 10)
         };
-        
+
         // Post and save data
         if (props.question.id) {
-            console.log("-");
-            console.log(props.question);
-            console.log("-");
             questionService.update(questionData, props.question.id)
                 .then((response) => {
                     props.showQuestionList();

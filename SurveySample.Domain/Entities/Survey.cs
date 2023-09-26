@@ -11,9 +11,10 @@ namespace SurveySample.Domain.Entities
         public int id { get; set; }
 
         [Required]
-        [StringLength(250, MinimumLength = 1)]
+        [MaxLength(250)]
         public string surveyTitle { get; set; }
 
-        public virtual IEnumerable<Question>? questions { get; set; }
+        // Navigation property for related questions
+        public virtual IEnumerable<Question>? questions { get; set; } 
     }
 }

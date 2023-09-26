@@ -8,6 +8,7 @@ using SurveySample.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SurveySample.Web.Controllers
@@ -47,13 +48,21 @@ namespace SurveySample.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] QuestionDTO dto)
+        public IActionResult Post([FromBody] QuestionDTO questionDTO)
         {
             if (!ModelState.IsValid)
             {
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
                 return BadRequest(ModelState);
             }
-            var question = Mapper.Map<Question>(dto);
+
+            var question = Mapper.Map<Question>(questionDTO);
             QuestionService.Add(question);
             return Ok();
         }

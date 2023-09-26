@@ -12,10 +12,13 @@ namespace SurveySample.Domain.DTOs
     public class QuestionDTO
     {
         public int id { get; set; }
+
         public string questionText { get; set; }
+
         public int surveyId { get; set; }
 
-        public virtual IEnumerable<QuestionOption>? questionOptions { get; set; }
+
+        public virtual ICollection<QuestionOptionDTO>? questionOptions { get; set; }
 
     }
 }

@@ -29,9 +29,9 @@ function AddRemoveOptionField({ initialOptions = [], ...props }) {
                                 type="text"
                                 value={field.optionText}
                                 onChange={(event) => handleChange(index, event)}
-                                name={props.name + "-" + index}
+                                name={"option-" + index}
                                 className="form-control"
-                                placeholder={props.placeHolder}
+                                placeholder="Options"
                             />
                             {field.id && <input type="hidden" value={field.id} name={"optionId-" + index} />}
                         </div>

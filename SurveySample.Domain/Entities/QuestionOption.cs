@@ -12,11 +12,12 @@ namespace SurveySample.Domain.Entities
         public int id { get; set; }
 
         [Required]
-        [StringLength(250, MinimumLength = 1)]
+        [MaxLength(250)] 
         public string optionText { get; set; }
 
-        [Required]
+        [ForeignKey("Question")]
         public int questionId { get; set; }
+
 
     }
     
