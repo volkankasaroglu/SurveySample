@@ -13,5 +13,6 @@ namespace SurveySample.Domain.DTOs
         public int id { get; set; }
         public string optionText { get; set; }
         public int questionId { get; set; }
+        public int voteCount { get; set; }
     }
 }

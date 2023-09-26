@@ -52,7 +52,7 @@ function AddRemoveOptionField({ initialOptions = [], ...props }) {
             <div className="row">
                 <div className="col-sm-12">
                     <button className="btn btn-outline-success" type="button" onClick={addInputField}>
-                        Add New
+                        Add Option
                     </button>
                 </div>
             </div>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { questionService } from "../services/QuestionService";
+import { QuestionService } from "../services/questionService";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function QuestionList(props) {
     const [questions, setQuestions] = useState([]);
     const param = useParams();
 
     function fetchQuestions() {
-        questionService
+        QuestionService
             .getSurveyQuestions(param.surveyId)
             .then((response) => {
                 setQuestions(response.data);
@@ -19,7 +20,7 @@ export function QuestionList(props) {
     useEffect(() => fetchQuestions());
 
     function deleteQuestion(id) {
-        questionService
+        QuestionService
             .delete(id)
             .then((response) => {
                 fetchQuestions();
@@ -31,8 +32,16 @@ export function QuestionList(props) {
 
     return (
         <>
-            <h2 className="text-center mb-3"> Survey Content</h2>
-            <button type="button" onClick={() => props.showQuestionForm({})} className="btn btn-primary me-2">Add Question</button>
+            <h2 className="text-center mb-3"> Survey Contents</h2>
+            <div className="d-flex align-items-center">
+                <Link to={"/surveys"}>
+                    <button className="btn btn-secondary me-2">Back to Surveys</button>
+                </Link>
+                <div className="ms-auto">
+                    <button type="button" onClick={() => props.showQuestionForm({})} className="btn btn-primary me-2">Add Question</button>
+                </div>
+            </div>
+
             <table className="table">
                 <thead>
                     <tr>

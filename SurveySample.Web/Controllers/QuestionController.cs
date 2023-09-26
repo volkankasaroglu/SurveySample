@@ -64,6 +64,14 @@ namespace SurveySample.Web.Controllers
 
             var question = Mapper.Map<Question>(questionDTO);
             QuestionService.Add(question);
+
+            return Ok();
+        }
+        [HttpPut("Vote/Add/{questionOptionId}")]
+        public IActionResult AddVote(int questionOptionId)
+        { 
+            QuestionService.AddVote(questionOptionId);
+
             return Ok();
         }
         [HttpPut]
@@ -78,6 +86,7 @@ namespace SurveySample.Web.Controllers
             QuestionService.Update(question);
             return Ok();
         }
+
         [HttpDelete]
         public IActionResult Delete(int? id)
         {

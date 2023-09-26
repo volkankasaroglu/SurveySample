@@ -42,7 +42,7 @@ http.interceptors.response.use(
     }
 );
 
-export const surveyService = {
+export const SurveyService = {
     getAll,
     getById,
     create,

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { surveyService } from "../services/SurveyService";
+import { SurveyService } from "../services/surveyService";
 import { Link } from "react-router-dom";
 
 export function SurveyList(props) {
     const [surveys, setSurveys] = useState([]);
 
     function fetchSurveys() {
-        surveyService
+        SurveyService
             .getAll()
             .then((response) => {
                 setSurveys(response.data);
@@ -18,7 +18,7 @@ export function SurveyList(props) {
     useEffect(() => fetchSurveys(), []);
 
     function deleteSurvey(id) {
-        surveyService
+        SurveyService
             .delete(id)
             .then((response) => {
                 console.log(response);

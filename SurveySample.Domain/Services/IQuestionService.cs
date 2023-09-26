@@ -12,6 +12,7 @@ namespace SurveySample.Domain.Services
         void Add(Question question);
         void Update(Question question);
         void Delete(Question question);
+        void AddVote(int QuestionOptionId);
         Question? Get(int id);
         IEnumerable<Question> GetSurveyQuestions(int surveyId);
         IEnumerable<QuestionOption> GetQuestionOptions(int id);

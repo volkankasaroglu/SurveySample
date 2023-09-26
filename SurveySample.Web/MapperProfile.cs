@@ -11,9 +11,7 @@ namespace SurveySample.Web
             CreateMap<Survey, SurveyDTO>().ReverseMap();
             CreateMap<Survey, SurveyIndexDTO>().ReverseMap();
             CreateMap<Question, QuestionDTO>().ReverseMap();
-            CreateMap<Question, QuestionIndexDTO>().ReverseMap();
             CreateMap<QuestionOption, QuestionOptionDTO>().ReverseMap();
-            CreateMap<QuestionOption, QuestionOptionIndexDTO>().ReverseMap();
         }
     }
 }

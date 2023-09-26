@@ -37,11 +37,17 @@ namespace SurveySample.Infrastructure.Services
         {
             return db.Questions.Where(e => e.surveyId == surveyId).Include(a => a.questionOptions).AsEnumerable();
         }
+        public void AddVote(int QuestionOptionId)
+        {
+            var questionOption = db.QuestionOptions.First(e => e.id == QuestionOptionId);
+            questionOption.voteCount++;
+            db.Entry(questionOption).State = EntityState.Modified;
+
+            db.SaveChanges();
+        }
 
         public void Update(Question question)
         {
-            // db.Questions.Update(question);
-
             db.Entry(question).State = EntityState.Modified;
 
             if (question.questionOptions != null)

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { surveyService } from "../services/SurveyService";
+import { SurveyService } from "../services/surveyService";
 
 export function SurveyForm(props) {
 
@@ -25,7 +25,7 @@ export function SurveyForm(props) {
 
         //post and save data
         if (props.survey.id) {
-            surveyService
+            SurveyService
                 .update(survey, props.survey.id)
                 .then((response) => {
                     props.showSurveyList();
@@ -35,7 +35,7 @@ export function SurveyForm(props) {
                 });
         }
         else {
-            surveyService
+            SurveyService
                 .create(survey)
                 .then((response) => {
                     console.log(response);

@@ -8,24 +8,8 @@ const http = axios.create({
     },
 });
 
-const getSurveyQuestions = (surveyId) => {
-    return http.get(`question/GetSurveyQuestions?surveyId=${surveyId}`);
-};
-
-const getById = (id) => {
-    return http.get(`question?id=${id}`);
-};
-
-const create = (model) => {
-    return http.post("question", model);
-};
-
-const update = (model, id) => {
-    return http.put(`question?id=${id}`, { ...model });
-};
-
-const _delete = (id) => {
-    return http.delete(`question?id=${id}`);
+const addVote = (optionId) => {
+    return http.put(`question/Vote/Add/${optionId}`);
 };
 
 http.interceptors.response.use(
@@ -42,10 +26,6 @@ http.interceptors.response.use(
     }
 );
 
-export const QuestionService = {
-    getSurveyQuestions,
-    getById,
-    create,
-    update,
-    delete: _delete,
+export const VoteService = {
+    addVote,
 };

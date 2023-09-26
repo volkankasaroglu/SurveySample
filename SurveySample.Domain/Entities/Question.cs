@@ -18,8 +18,6 @@ namespace SurveySample.Domain.Entities
         [ForeignKey("Survey")]
         public int surveyId { get; set; }
 
-        public virtual Survey survey { get; set; }
-
         public virtual IEnumerable<QuestionOption>? questionOptions { get; set; }
     }
 }

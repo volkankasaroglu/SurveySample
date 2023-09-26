@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { questionService } from "../services/QuestionService";
+import { QuestionService } from "../services/questionService";
 import { useParams } from "react-router-dom";
 import AddRemoveOptionField from "./addRemoveOptionField";
 
@@ -33,9 +33,7 @@ export function QuestionForm(props) {
             );
             return;
         }
-        console.log("ww")
-        console.log(optionsArray)
-        console.log("ww")
+        
         const questionData = {
             id: questionId,
             questionText: questionText,
@@ -45,7 +43,7 @@ export function QuestionForm(props) {
 
         // Post and save data
         if (props.question.id) {
-            questionService.update(questionData, props.question.id)
+            QuestionService.update(questionData, props.question.id)
                 .then((response) => {
                     props.showQuestionList();
                 })
@@ -53,7 +51,7 @@ export function QuestionForm(props) {
                     console.log(error.response);
                 });
         } else {
-            questionService.create(questionData)
+            QuestionService.create(questionData)
                 .then((response) => {
                     props.showQuestionList();
                 })
