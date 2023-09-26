@@ -66,7 +66,7 @@ export function SurveyResults() {
   return (
     <>
       <div className="col-6 mx-auto d-flex align-items-center">
-        <Link to={"/surveyview/" + (survey && survey.id)}>
+        <Link to={"/surveys"}>
           <button className="btn btn-secondary me-2">{"<<"}</button>
         </Link>
       </div>
