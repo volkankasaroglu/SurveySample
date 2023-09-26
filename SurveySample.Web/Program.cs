@@ -4,6 +4,7 @@ using SurveySample.Infrastructure;
 using SurveySample.Infrastructure.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using SurveySample.Web.Middlewares;
 
 namespace SurveySample.Web
 {
@@ -23,6 +24,7 @@ namespace SurveySample.Web
             services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.ConfigureSwagger();
 
             services.AddScoped<ISurveyService, SurveyService>();
             services.AddScoped<IQuestionService, QuestionService>();
@@ -38,6 +40,7 @@ namespace SurveySample.Web
             {
             }
 
+            app.UseAPISwagger();
             app.UseStaticFiles();
             app.UseRouting();
 
