@@ -10,12 +10,8 @@ namespace SurveySample.Domain.DTOs
 {
     public class QuestionOptionDTO
     {
-        [Required]
-        [StringLength(Int32.MaxValue, MinimumLength = 1)]
-        public string OptionText { get; set; }
-
-        [Required]
-        public int QuestionId { get; set; }
-
+        public int id { get; set; }
+        public string optionText { get; set; }
+        public int questionId { get; set; }
     }
 }

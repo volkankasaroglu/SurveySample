@@ -31,7 +31,11 @@ namespace SurveySample.Infrastructure.Services
 
         public Question? Get(int id)
         {
-            return db.Questions.Include(a=>a.QuestionOptions).FirstOrDefault(e => e.Id == id);
+            return db.Questions.Include(a => a.questionOptions).FirstOrDefault(e => e.id == id);
+        }
+        public IEnumerable<Question> GetSurveyQuestions(int surveyId)
+        {
+            return db.Questions.Where(e => e.surveyId == surveyId).Include(a => a.questionOptions).AsEnumerable();
         }
 
         public void Update(Question question)
@@ -42,7 +46,7 @@ namespace SurveySample.Infrastructure.Services
 
         public IEnumerable<QuestionOption> GetQuestionOptions(int id)
         {
-            return db.QuestionOptions.Where(a=> a.Question.Id == id).ToList();
+            return db.QuestionOptions.Where(a=> a.questionId == id).ToList();
         }
 
     }

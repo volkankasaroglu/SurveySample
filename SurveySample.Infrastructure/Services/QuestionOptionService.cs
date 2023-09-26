@@ -31,7 +31,7 @@ namespace SurveySample.Infrastructure.Services
 
         public QuestionOption? Get(int id)
         {
-            return db.QuestionOptions.FirstOrDefault(e => e.Id == id);
+            return db.QuestionOptions.FirstOrDefault(e => e.id == id);
         }
 
         public void Update(QuestionOption questionOption)

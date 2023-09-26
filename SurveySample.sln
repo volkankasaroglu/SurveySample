@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveySample.Web", "SurveySample.Web\SurveySample.Web.csproj", "{E9835B73-3763-40DD-82B9-B64F3A3BB432}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveySample.Domain", "..\SurveySampleWithReact\SurveySample.Domain\SurveySample.Domain.csproj", "{D4F4B9BD-4400-4DA0-AF24-97EFB02663FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveySample.Domain", "..\SurveySample\SurveySample.Domain\SurveySample.Domain.csproj", "{D4F4B9BD-4400-4DA0-AF24-97EFB02663FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveySample.Infrastructure", "..\SurveySampleWithReact\SurveySample.Infrastructure\SurveySample.Infrastructure.csproj", "{BEBEFD95-B397-49F2-A573-594FEAEE48CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveySample.Infrastructure", "..\SurveySample\SurveySample.Infrastructure\SurveySample.Infrastructure.csproj", "{BEBEFD95-B397-49F2-A573-594FEAEE48CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

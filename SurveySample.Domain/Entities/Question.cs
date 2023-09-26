@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SurveySample.Domain.Entities
 {
     public class Question
     {
-        public int Id { get; set; }
-        public string QuestionText { get; set; }
+        [Key]
+        public int id { get; set; }
 
+        [Required]
+        [StringLength(500, MinimumLength = 1)]
+        public string questionText { get; set; }
 
-        public virtual IEnumerable<QuestionOption>? QuestionOptions { get; set; }
-        public virtual Survey Survey { get; set; }
+        [ForeignKey("Survey")]
+        public int surveyId { get; set; }
+        
+        public virtual IEnumerable<QuestionOption>? questionOptions { get; set; }
+        
     }
 }

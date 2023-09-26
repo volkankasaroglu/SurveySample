@@ -11,7 +11,7 @@ using SurveySample.Infrastructure;
 namespace SurveySample.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230923162958_InitalDb")]
+    [Migration("20230926085927_InitalDb")]
     partial class InitalDb
     {
         /// <inheritdoc />
@@ -26,95 +26,94 @@ namespace SurveySample.Infrastructure.Migrations
 
             modelBuilder.Entity("SurveySample.Domain.Entities.Question", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("QuestionText")
+                    b.Property<string>("questionText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("SurveyId")
+                    b.Property<int>("surveyId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("SurveyId");
+                    b.HasIndex("surveyId");
 
                     b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("SurveySample.Domain.Entities.QuestionOption", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("OptionText")
+                    b.Property<string>("optionText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<int>("QuestionId")
+                    b.Property<int>("questionId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("questionId");
 
                     b.ToTable("QuestionOptions");
                 });
 
             modelBuilder.Entity("SurveySample.Domain.Entities.Survey", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("SurveyTitle")
+                    b.Property<string>("surveyTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Surveys");
                 });
 
             modelBuilder.Entity("SurveySample.Domain.Entities.Question", b =>
                 {
-                    b.HasOne("SurveySample.Domain.Entities.Survey", "Survey")
-                        .WithMany("Questions")
-                        .HasForeignKey("SurveyId")
+                    b.HasOne("SurveySample.Domain.Entities.Survey", null)
+                        .WithMany("questions")
+                        .HasForeignKey("surveyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Survey");
                 });
 
             modelBuilder.Entity("SurveySample.Domain.Entities.QuestionOption", b =>
                 {
-                    b.HasOne("SurveySample.Domain.Entities.Question", "Question")
-                        .WithMany("QuestionOptions")
-                        .HasForeignKey("QuestionId")
+                    b.HasOne("SurveySample.Domain.Entities.Question", null)
+                        .WithMany("questionOptions")
+                        .HasForeignKey("questionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("SurveySample.Domain.Entities.Question", b =>
                 {
-                    b.Navigation("QuestionOptions");
+                    b.Navigation("questionOptions");
                 });
 
             modelBuilder.Entity("SurveySample.Domain.Entities.Survey", b =>
                 {
-                    b.Navigation("Questions");
+                    b.Navigation("questions");
                 });
 #pragma warning restore 612, 618
         }
