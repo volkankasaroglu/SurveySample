@@ -22,15 +22,19 @@ export function QuestionForm(props) {
                 id: formObject["optionId-" + index] ? parseInt(formObject["optionId-" + index], 10) : 0
             }));
 
-        if (!questionText) {
-            setErrorMessage(
-                <div className="alert alert-warning" role="alert">
-                    Please enter text for the question
-                </div>
-            );
-            return;
+        const inputElements = document.querySelectorAll('input[type="text"]');
+
+        for (const input of inputElements) {
+            if (input.value.trim() === '') {
+                setErrorMessage(
+                    <div className="alert alert-warning" role="alert">
+                        Please enter all fields for the question
+                    </div>
+                );
+                return;
+            }
         }
-        
+
         const questionData = {
             id: questionId,
             questionText: questionText,
@@ -71,7 +75,7 @@ export function QuestionForm(props) {
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Question Text</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="questionText" defaultValue={props.question.questionText} />
+                                <input className="form-control" name="questionText" type="text" defaultValue={props.question.questionText} />
                                 <div className="row"><AddRemoveOptionField initialOptions={props.question.questionOptions} /></div>
                             </div>
 
